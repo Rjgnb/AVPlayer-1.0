@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="18.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="F:\project\audio_vioce\avplayer\bbb\CMakeFiles\84959e5491e20020de32d76588a07d00\RUN_TESTS_force.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{FA446FF4-9627-3402-AC53-6C7912780C95}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

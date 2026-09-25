@@ -1,0 +1,15 @@
+{
+	"InstallScripts" : 
+	[
+		"F:/project/audio_vioce/avplayer/bbb/cmake_install.cmake",
+		"F:/project/audio_vioce/avplayer/bbb/src/core/cmake_install.cmake",
+		"F:/project/audio_vioce/avplayer/bbb/src/media/cmake_install.cmake",
+		"F:/project/audio_vioce/avplayer/bbb/src/output/cmake_install.cmake",
+		"F:/project/audio_vioce/avplayer/bbb/src/output/sdl/cmake_install.cmake",
+		"F:/project/audio_vioce/avplayer/bbb/src/player/cmake_install.cmake",
+		"F:/project/audio_vioce/avplayer/bbb/src/ui/cmake_install.cmake",
+		"F:/project/audio_vioce/avplayer/bbb/src/app/console/cmake_install.cmake",
+		"F:/project/audio_vioce/avplayer/bbb/tests/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

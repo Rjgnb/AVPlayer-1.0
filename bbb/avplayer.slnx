@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Solution>
+	<Configurations>
+		<BuildType Name="Debug"/>
+		<BuildType Name="Release"/>
+		<BuildType Name="MinSizeRel"/>
+		<BuildType Name="RelWithDebInfo"/>
+		<Platform Name="x64"/>
+	</Configurations>
+	<Project Path="ALL_BUILD.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="86df05aa-910d-3ac2-9353-133e62953108" DefaultStartup="true">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+		<BuildDependency Project="src/app/console/av_console.vcxproj"/>
+		<BuildDependency Project="tests/av_tests.vcxproj"/>
+		<BuildDependency Project="src/core/avcore.vcxproj"/>
+		<BuildDependency Project="src/media/avmedia.vcxproj"/>
+		<BuildDependency Project="src/output/avoutput.vcxproj"/>
+		<BuildDependency Project="src/output/sdl/avoutput_sdl.vcxproj"/>
+		<BuildDependency Project="src/player/avplayer.vcxproj"/>
+		<BuildDependency Project="src/ui/avui.vcxproj"/>
+		<Build Solution="Debug|*" Project="false"/>
+		<Build Solution="Release|*" Project="false"/>
+		<Build Solution="MinSizeRel|*" Project="false"/>
+		<Build Solution="RelWithDebInfo|*" Project="false"/>
+	</Project>
+	<Project Path="tests/Continuous.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="18d143e3-29d5-37c1-8d22-287dc08d3e1c">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+		<Build Solution="Debug|*" Project="false"/>
+		<Build Solution="Release|*" Project="false"/>
+		<Build Solution="MinSizeRel|*" Project="false"/>
+		<Build Solution="RelWithDebInfo|*" Project="false"/>
+	</Project>
+	<Project Path="tests/Experimental.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="460caffd-3d50-3915-bd70-124d03027c46">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+		<Build Solution="Debug|*" Project="false"/>
+		<Build Solution="Release|*" Project="false"/>
+		<Build Solution="MinSizeRel|*" Project="false"/>
+		<Build Solution="RelWithDebInfo|*" Project="false"/>
+	</Project>
+	<Project Path="tests/Nightly.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="700efe73-eedd-3380-878b-8b3bb8e21ae2">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+		<Build Solution="Debug|*" Project="false"/>
+		<Build Solution="Release|*" Project="false"/>
+		<Build Solution="MinSizeRel|*" Project="false"/>
+		<Build Solution="RelWithDebInfo|*" Project="false"/>
+	</Project>
+	<Project Path="tests/NightlyMemoryCheck.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="6c78eacb-3f0f-3677-a3e3-52632ed4a9b4">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+		<Build Solution="Debug|*" Project="false"/>
+		<Build Solution="Release|*" Project="false"/>
+		<Build Solution="MinSizeRel|*" Project="false"/>
+		<Build Solution="RelWithDebInfo|*" Project="false"/>
+	</Project>
+	<Project Path="RUN_TESTS.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="cdb1a4f2-c752-337a-846b-32363e6afe76">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+		<Build Solution="Debug|*" Project="false"/>
+		<Build Solution="Release|*" Project="false"/>
+		<Build Solution="MinSizeRel|*" Project="false"/>
+		<Build Solution="RelWithDebInfo|*" Project="false"/>
+	</Project>
+	<Project Path="ZERO_CHECK.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="41f18ffb-c449-3ddc-b7c7-15ed65e7a334"/>
+	<Project Path="src/app/console/av_console.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="9eac5d33-ba31-37ef-8510-4344614d21e3">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+		<BuildDependency Project="src/core/avcore.vcxproj"/>
+		<BuildDependency Project="src/media/avmedia.vcxproj"/>
+		<BuildDependency Project="src/output/avoutput.vcxproj"/>
+		<BuildDependency Project="src/output/sdl/avoutput_sdl.vcxproj"/>
+		<BuildDependency Project="src/player/avplayer.vcxproj"/>
+		<BuildDependency Project="src/ui/avui.vcxproj"/>
+	</Project>
+	<Project Path="tests/av_tests.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="1119c9b2-b6bd-3f4d-aafa-f2f775f5c43a">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+		<BuildDependency Project="src/core/avcore.vcxproj"/>
+		<BuildDependency Project="src/media/avmedia.vcxproj"/>
+		<BuildDependency Project="src/output/avoutput.vcxproj"/>
+		<BuildDependency Project="src/player/avplayer.vcxproj"/>
+		<BuildDependency Project="src/ui/avui.vcxproj"/>
+	</Project>
+	<Project Path="src/core/avcore.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="c077fada-aebf-3acd-bd2a-fc9a40bc6996">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+	</Project>
+	<Project Path="src/media/avmedia.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="07bd007d-0b82-39eb-b829-f60435f9323d">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+		<BuildDependency Project="src/core/avcore.vcxproj"/>
+	</Project>
+	<Project Path="src/output/avoutput.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="83e227c6-8419-3e29-8c8f-7934fee356de">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+		<BuildDependency Project="src/core/avcore.vcxproj"/>
+	</Project>
+	<Project Path="src/output/sdl/avoutput_sdl.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="de4836bf-729d-3e2f-acb7-f723a1119ec1">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+		<BuildDependency Project="src/core/avcore.vcxproj"/>
+		<BuildDependency Project="src/output/avoutput.vcxproj"/>
+	</Project>
+	<Project Path="src/player/avplayer.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="a95ad668-3a28-3a94-849e-81924609c4f9">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+		<BuildDependency Project="src/core/avcore.vcxproj"/>
+		<BuildDependency Project="src/media/avmedia.vcxproj"/>
+		<BuildDependency Project="src/output/avoutput.vcxproj"/>
+	</Project>
+	<Project Path="src/ui/avui.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="d12b3827-8fdb-30a0-b19c-6f149ff0d4a8">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+		<BuildDependency Project="src/core/avcore.vcxproj"/>
+		<BuildDependency Project="src/output/avoutput.vcxproj"/>
+	</Project>
+</Solution>
