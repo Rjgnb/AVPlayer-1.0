@@ -57,7 +57,7 @@
 
 | 需要 | 说明 |
 |---|---|
-| CMake ≥ 3.21 | |
+| CMake ≥ 3.21 | 但**必须能支持你装的 VS 版本** —— VS 2026 需要 CMake 4.x，见下节 |
 | C++20 编译器 | MSVC / GCC / Clang 均可（本项目主要在 MSVC 上验证） |
 | **FFmpeg + SDL2 开发包** | **不在本仓库内**，需自行准备 |
 
@@ -73,30 +73,61 @@ cmake -S . -B build -DAVPLAYER_SDK_ROOT=/path/to/ffmpeg-dev-sdk
 
 ## 构建
 
-### Windows + MSVC
+### 先确认 CMake 版本能认你的 VS
 
-**必须先让编译器进入 PATH**，否则 CMake 找不到 `cl.exe` 会退回 NMake 并报
-`Running 'nmake' '-?' failed`。在 **Developer Command Prompt** 里操作，或先手动调用：
+CMake 的 VS 生成器是**按 Visual Studio 版本命名**的，版本太旧就生成不了对应的工程：
+
+| Visual Studio | 需要的 CMake 生成器 | CMake 版本 |
+|---|---|---|
+| VS 2026 (v18) | `Visual Studio 18 2026` | **4.x** |
+| VS 2022 (v17) | `Visual Studio 17 2022` | 3.21+ |
+
+用 `cmake --version` 和 `cmake --help`（看 `Visual Studio ...` 生成器列表）核对。
+**PATH 上若装了多个 CMake，生效的是靠前的那个**，必要时用完整路径调用，例如：
+
+```bat
+"C:\Program Files\CMake\bin\cmake.exe" --version
+```
+
+版本不匹配时 CMake 不会明确报"生成器不存在"，而是悄悄退回 NMake，再报一个与真实原因
+无关的 `Running 'nmake' '-?' failed` —— 这个报错很容易把人带偏。
+
+### 方式一：Visual Studio 生成器（推荐，**不需要** vcvars）
+
+```bat
+cmake -S . -B build -G "Visual Studio 18 2026" -DAVPLAYER_SDK_ROOT=F:/path/to/ffmpeg-dev-sdk
+cmake --build build --config Debug
+```
+
+CMake 会自己找到 `cl.exe`，同时生成 `build/avplayer.slnx`，可直接用 Visual Studio 打开。
+
+多配置生成器没有单一的"构建类型"，所以**产物按源目录镜像分布**：
+
+```
+build/src/app/console/Debug/av_console.exe
+build/tests/Debug/av_tests.exe
+```
+
+### 方式二：Ninja（需要先让编译器进 PATH）
 
 ```bat
 call "<VS安装目录>\VC\Auxiliary\Build\vcvars64.bat"
-```
-
-然后配置与构建：
-
-```bat
+set VSLANG=1033
 cmake -S . -B build -G Ninja -DAVPLAYER_SDK_ROOT=F:/path/to/ffmpeg-dev-sdk
 cmake --build build
 ```
 
-生成器用 **Ninja**。`VSLANG=1033` 建议一并设置 —— 中文版 MSVC 的 `/showIncludes`
-前缀编码问题会让 Ninja 静默丢失头文件依赖，进而残留过期的 `.obj`：
+单配置生成器下 `CMAKE_RUNTIME_OUTPUT_DIRECTORY` 生效，产物**统一在 `build/bin/`**：
 
-```bat
-set VSLANG=1033
+```
+build/bin/av_console.exe
+build/bin/av_tests.exe
 ```
 
-仓库里的 `tools/build.bat` 把上面这些封装好了，并会在头文件变更时自动清理旧目标文件。
+`VSLANG=1033` 建议一并设置 —— 中文版 MSVC 的 `/showIncludes` 前缀编码问题会让 Ninja
+静默丢失头文件依赖，进而残留过期的 `.obj`。
+
+仓库里的 `tools/build.bat` 封装的是方式二，并会在头文件变更时自动清理旧目标文件。
 它内含作者本机的 VS/CMake 路径，**需要按自己的环境修改**：
 
 ```bat
@@ -123,12 +154,13 @@ cmake --build build
 | `AVPLAYER_BUILD_TESTS` | `ON` | 构建单元测试 |
 | `AVPLAYER_WARNINGS_AS_ERRORS` | `OFF` | 警告视为错误 |
 
-构建完成后可执行文件在 `build/bin/`。
-
 ## 运行
 
+> 下文的 `<bin>` 指可执行文件所在目录，随生成器而变：
+> 方式一（VS）是 `build/src/app/console/Debug/`，方式二（Ninja）是 `build/bin/`。
+
 ```bash
-build/bin/av_console <媒体文件> [选项]
+<bin>/av_console <媒体文件> [选项]
 ```
 
 | 选项 | 说明 |
@@ -146,13 +178,13 @@ build/bin/av_console <媒体文件> [选项]
 用 `null` 后端可以在无显示器/无声卡的环境下验证整条管线：
 
 ```bash
-build/bin/av_console sample.mp4 --backend null --run-seconds 5
+<bin>/av_console sample.mp4 --backend null --run-seconds 5
 ```
 
 ## 测试
 
 ```bash
-build/bin/av_tests.exe
+<bin>/av_tests.exe
 ```
 
 自带极简 TestHarness，不依赖任何测试框架。当前 **40 个用例全部通过**，覆盖队列语义、注入式时钟、解封装/解码、null 后端、位图字体、覆盖层渲染、端到端播放与交互。
