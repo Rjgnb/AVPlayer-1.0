@@ -11,6 +11,9 @@ namespace av::detail {
 // 为什么"解码 + 输出"放在同一条线程？
 // 因为音频的节奏由设备水位决定（写不进去就等），拆成两条只会多一个队列和一次拷贝，
 // 却换不来任何并行收益。视频则相反：解码很贵、呈现要等时钟，必须分开。
+//
+// 数据流位置：
+//   audioPackets -> Decoder -> AudioResampler -> IAudioSink -> MediaClock
 class AudioPipeline
 {
 public:

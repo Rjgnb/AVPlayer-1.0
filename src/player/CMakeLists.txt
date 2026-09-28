@@ -1,4 +1,4 @@
-# avplayer：编排层（会话 + 三条后台线程 + 门面）
+# avplayer：编排层（VS: avplayer；会话 + 三条后台线程 + 门面）
 #
 # 依赖是分级的：
 #   PUBLIC  av::core / av::output  -> 因为 Player.h 里出现了它们的类型（接口的一部分）

@@ -49,6 +49,11 @@ include(CopyRuntimeDlls)
 #   media + output <- player
 #   core + output  <- ui
 #   player + ui + 具体后端 <- app
+#
+# 用 Visual Studio 打开 CMake 生成的解决方案时，每个 target 会变成一个
+# vcxproj：avcore / avmedia / avoutput / avoutput_sdl / avplayer / avui /
+# av_console / av_tests。项目多不是为了让工程变复杂，而是为了让依赖边界
+# 可由构建系统证明。完整阅读/调试路线见 docs/VS_PROJECT_GUIDE.md。
 # ---------------------------------------------------------------------------
 add_subdirectory(src/core)
 add_subdirectory(src/media)

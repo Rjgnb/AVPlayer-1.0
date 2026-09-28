@@ -10,6 +10,26 @@
 //      控制台里是 while + sleep，Qt 里就是一个 QTimer —— 同一套核心两种宿主。
 //   3) 所有 public 方法都要求**在同一个（主）线程调用**，回调也从 Tick() 内发出。
 //      这条约定让 Qt 侧不需要任何跨线程 marshal，信号槽天然安全。
+//
+// 读这个类时先记住下面这张对象地图，不要从字段开始猜：
+//
+//   app/console 或 app/qt
+//          │ 只持有 Player，负责驱动 Tick + 接输入/信号
+//          ▼
+//       av::Player
+//          │ 创建并拥有（通过 pimpl）
+//          ├── PacketPump       demux 线程：读包、执行 seek
+//          ├── AudioPipeline    audio 线程：解码 -> 重采样 -> 音频设备
+//          ├── VideoPipeline    video 线程：解码 -> 带 generation 的帧队列
+//          └── SharedState      主线程/后台线程唯一的通信中心
+//                    │
+//          ┌─────────┴─────────┐
+//          ▼                   ▼
+//      av::media           av::output
+//   FFmpeg demux/decode    SDL/Qt/null 后端
+//
+// 建议阅读顺序：Player.h -> Player.cpp 的 Open/Play/Seek -> SharedState.h
+// -> 三个 pipeline -> output/sdl。这样每一层只回答一个问题。
 // ===========================================================================
 #include <cstdint>
 #include <functional>

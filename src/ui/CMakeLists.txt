@@ -1,4 +1,4 @@
-# avui：覆盖层（进度条/时间/倍速/点击暂停）
+# avui：覆盖层（VS: avui；进度条/时间/倍速/点击暂停）
 # 只依赖 core 与 output 的**接口**，不认识 FFmpeg，也不认识 SDL。
 add_library(avui STATIC
     src/BitmapFont.cpp

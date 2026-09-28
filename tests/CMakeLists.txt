@@ -1,4 +1,4 @@
-# av_tests：不依赖任何测试框架（自带 60 行的 TestHarness）
+# av_tests：不依赖任何测试框架（VS: av_tests；自带极简 TestHarness）
 add_executable(av_tests
     TestHarness.cpp
     test_core_queue.cpp

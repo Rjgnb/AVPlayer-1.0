@@ -1,4 +1,4 @@
-# av_console：控制台宿主
+# av_console：控制台宿主（VS: av_console，调试时把它设为启动项目）
 # 它是**唯一**决定"用哪个后端"的地方 —— 依赖方向在这里收口。
 add_executable(av_console main.cpp)
 

@@ -1,6 +1,7 @@
 # avplayer 实施计划（分阶段 + 验收标准）
 
 > 审查记录：[第一轮：架构/接口冻结](REVIEW_ROUND1.md) · [第二轮：实现/并发/异常复核](REVIEW_ROUND2.md)
+> Visual Studio 项目结构说明：[VS_PROJECT_GUIDE.md](VS_PROJECT_GUIDE.md)
 
 > 唯一纪律：**每个阶段结束时，"构建 + 测试"都必须是绿的。**
 > 不能自动验证的改动不算完成 —— 这是"工程化"和"能跑就行"的分界线。

@@ -1,4 +1,4 @@
-# avcore：跨层数据契约 + 基础原语
+# avcore：跨层数据契约 + 基础原语（VS 项目名也是 avcore）
 # 规则：不依赖任何第三方（只能用到 C++ 标准库）—— 这条规则让核心可以被单测与复用。
 add_library(avcore STATIC
     src/Status.cpp

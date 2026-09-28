@@ -1,4 +1,4 @@
-# avoutput_sdl：SDL2 具体后端（唯一允许包含 <SDL.h> 的地方之一）
+# avoutput_sdl：SDL2 具体后端（VS: avoutput_sdl；这里才允许包含 <SDL.h>）
 add_library(avoutput_sdl STATIC
     src/SdlBackend.cpp
     src/SdlAudioSink.cpp

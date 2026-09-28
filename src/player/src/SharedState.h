@@ -30,6 +30,11 @@ namespace av::detail {
 //   * 命令位（暂停/速度/seek/退出）
 // 三件东西都放在这里，线程之间**只通过这个结构通信**，不互相持有指针 ——
 // 这就是"线程间也解耦"：拆线程/合线程只需要改这里和 Player.cpp。
+//
+// 阅读提示：
+//   - 结构体前半部分偏“数据/设备”，后半部分偏“命令/状态”；
+//   - atomic 字段是跨线程信号，mutex + queue 才是跨线程数据流；
+//   - 不要在这里实现播放策略，策略属于 Player/Pipeline。
 struct SharedState
 {
     SharedState(std::shared_ptr<output::IBackend> backend, const core::PlayerConfig& config);

@@ -1,4 +1,4 @@
-# avmedia：FFmpeg 适配层（解封装 / 解码 / 重采样 / 像素转换）
+# avmedia：FFmpeg 适配层（VS 项目名也是 avmedia）
 # 规则：可以用 FFmpeg，不可以用 SDL（更不许出现在 output/ui 里）。
 add_library(avmedia STATIC
     src/FFmpegUtil.cpp

@@ -1,4 +1,4 @@
-# avoutput：输出后端的**接口层** + headless(null) 后端 + 注册表
+# avoutput：输出后端的**接口层** + headless(null) 后端 + 注册表（VS: avoutput）
 # 规则：不依赖 FFmpeg、不依赖 SDL —— 只依赖 core。
 # 具体后端（sdl/qt/alsa...）在各自的子目录里，作为独立 target。
 add_library(avoutput STATIC

@@ -3,6 +3,7 @@
 > 目标读者：本项目作者（学习者）。本文只讲"为什么这么分层、边界在哪、接口长什么样"，实现细节在代码与 `docs/PLAN.md`。
 > 状态：**第一轮有条件通过，第二轮实现复核通过。**  
 > 审查记录：[REVIEW_ROUND1.md](REVIEW_ROUND1.md)、[REVIEW_ROUND2.md](REVIEW_ROUND2.md)。
+> Visual Studio 多项目阅读与调试：[VS_PROJECT_GUIDE.md](VS_PROJECT_GUIDE.md)。
 
 ---
 
