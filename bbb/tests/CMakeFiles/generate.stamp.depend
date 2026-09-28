@@ -1,7 +1,0 @@
-# CMake generation dependency list for this directory.
-F:/project/audio_vioce/avplayer/tests/CMakeLists.txt
-F:/tools/CMake/share/cmake-4.4/Modules/CTest.cmake
-F:/tools/CMake/share/cmake-4.4/Modules/CTestTargets.cmake
-F:/tools/CMake/share/cmake-4.4/Modules/CTestUseLaunchers.cmake
-F:/tools/CMake/share/cmake-4.4/Modules/DartConfiguration.tcl.in
-F:/tools/CMake/share/cmake-4.4/Templates/CTestScript.cmake.in

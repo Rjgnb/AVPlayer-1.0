@@ -29,7 +29,6 @@ class ManualClock final : public IClock
 public:
     double NowSeconds() const override { return now_; }
     void   Advance(double seconds) { now_ += seconds; }
-    void   SetNow(double seconds) { now_ = seconds; }
 
 private:
     double now_ = 0.0;

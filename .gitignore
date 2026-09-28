@@ -1,5 +1,37 @@
+# ---- 构建产物 ----
 build/
 build-*/
-bbb/
+[Bb]uild/
+[Rr]elease/
 cmake-build-*/
+bbb/
 .tmp_obj/
+x64/
+CMakeCache.txt
+CMakeFiles/
+*.obj
+*.o
+*.exe
+*.dll
+*.lib
+*.exp
+*.pdb
+*.ilk
+*.idb
+*.iobj
+*.ipdb
+*.tlog
+*.log
+*.res
+*.dt.*.json
+
+# ---- Visual Studio ----
+.vs/
+*.user
+*.suo
+
+# ---- 测试媒体 ----
+*.mp4
+
+# ---- 工具缓存 ----
+.ast-cache/
