@@ -73,12 +73,31 @@ cmake -S . -B build -DAVPLAYER_SDK_ROOT=/path/to/ffmpeg-dev-sdk
 
 ## 构建
 
-```bash
-cmake -S . -B build -DAVPLAYER_SDK_ROOT=/path/to/ffmpeg-dev-sdk
+### Windows + MSVC
+
+**必须先让编译器进入 PATH**，否则 CMake 找不到 `cl.exe` 会退回 NMake 并报
+`Running 'nmake' '-?' failed`。在 **Developer Command Prompt** 里操作，或先手动调用：
+
+```bat
+call "<VS安装目录>\VC\Auxiliary\Build\vcvars64.bat"
+```
+
+然后配置与构建：
+
+```bat
+cmake -S . -B build -G Ninja -DAVPLAYER_SDK_ROOT=F:/path/to/ffmpeg-dev-sdk
 cmake --build build
 ```
 
-Windows + MSVC 上还有作者自用的包装脚本 `tools/build.bat`（内含本机 VS/CMake 路径，**需要按自己的环境修改**）：
+生成器用 **Ninja**。`VSLANG=1033` 建议一并设置 —— 中文版 MSVC 的 `/showIncludes`
+前缀编码问题会让 Ninja 静默丢失头文件依赖，进而残留过期的 `.obj`：
+
+```bat
+set VSLANG=1033
+```
+
+仓库里的 `tools/build.bat` 把上面这些封装好了，并会在头文件变更时自动清理旧目标文件。
+它内含作者本机的 VS/CMake 路径，**需要按自己的环境修改**：
 
 ```bat
 tools\build.bat            :: 增量构建
@@ -86,7 +105,14 @@ tools\build.bat clean      :: 强制全量重编
 tools\build.bat av_tests   :: 只构建某个 target
 ```
 
-它会在头文件变更时自动清理旧目标文件 —— 中文版 MSVC 的 `/showIncludes` 前缀编码问题会让 Ninja 静默丢失头文件依赖，进而残留过期的 `.obj`。
+### Linux / macOS
+
+```bash
+cmake -S . -B build -G Ninja -DAVPLAYER_SDK_ROOT=/path/to/ffmpeg-dev-sdk
+cmake --build build
+```
+
+（未实测，遇到问题欢迎反馈。）
 
 ### 构建选项
 
